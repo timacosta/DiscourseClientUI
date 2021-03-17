@@ -18,18 +18,88 @@
                 <rect key="frame" x="0.0" y="0.0" width="402" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vGa-dk-EdV">
-                        <rect key="frame" x="12" y="-14" width="240" height="128"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vGa-dk-EdV">
+                        <rect key="frame" x="16" y="16" width="64" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="FKs-vt-YDZ"/>
+                            <constraint firstAttribute="height" constant="70" id="NHM-eh-cZh"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZX-cZ-Xfu" userLabel="Post Label">
+                        <rect key="frame" x="91" y="16" width="295" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="78H-2e-0dq">
+                        <rect key="frame" x="91" y="66" width="166" height="20.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-06-lCr">
+                                <rect key="frame" x="0.0" y="0.0" width="40.5" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoSmallAnswers" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-wF-muo">
+                                        <rect key="frame" x="0.0" y="0.0" width="17" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p58-8a-DTX">
+                                        <rect key="frame" x="20" y="0.0" width="20.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="GrayKC"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="504-BJ-Afr">
+                                <rect key="frame" x="50.5" y="0.0" width="42" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoViewsSmall" translatesAutoresizingMaskIntoConstraints="NO" id="Kz4-Yf-umW">
+                                        <rect key="frame" x="0.0" y="0.0" width="13" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNq-v1-H1T">
+                                        <rect key="frame" x="14" y="0.0" width="28" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="GrayKC"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8eA-aI-7db">
+                                <rect key="frame" x="102.5" y="0.0" width="63.5" height="20.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icoSmallCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="7WK-6s-DBS">
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="20.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jul 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUC-Wv-yaP">
+                                        <rect key="frame" x="17" y="0.0" width="46.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="GrayKC"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="vGa-dk-EdV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="LLH-tr-6hy"/>
+                    <constraint firstItem="vGa-dk-EdV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="N49-3D-yz7"/>
+                    <constraint firstItem="504-BJ-Afr" firstAttribute="bottom" secondItem="vGa-dk-EdV" secondAttribute="bottom" id="dfM-AA-I4d"/>
+                    <constraint firstItem="5ZX-cZ-Xfu" firstAttribute="top" secondItem="vGa-dk-EdV" secondAttribute="top" id="nzi-Vh-2d1"/>
+                    <constraint firstItem="5ZX-cZ-Xfu" firstAttribute="leading" secondItem="vGa-dk-EdV" secondAttribute="trailing" constant="11" id="t6K-T5-owH"/>
+                    <constraint firstAttribute="trailing" secondItem="5ZX-cZ-Xfu" secondAttribute="trailing" constant="16" id="tuH-9t-hQk"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="WhiteKCBackground"/>
-            <point key="canvasLocation" x="155.07246376811597" y="75.334821428571431"/>
+            <point key="canvasLocation" x="-75.362318840579718" y="74.665178571428569"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icoSmallAnswers" width="17" height="14"/>
+        <image name="icoSmallCalendar" width="12" height="14"/>
+        <image name="icoViewsSmall" width="13" height="14"/>
+        <namedColor name="GrayKC">
+            <color red="0.047058823529411764" green="0.047058823529411764" blue="0.047058823529411764" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WhiteKCBackground">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
