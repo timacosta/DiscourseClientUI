@@ -21,6 +21,11 @@ class TopicsViewController: UIViewController {
         table.rowHeight = UITableView.automaticDimension
         return table
     }()
+    
+    /*lazy var flotingActionButton: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "icoNew")?.withRenderingMode(.alwaysOriginal))
+        
+    }()*/
 
     let viewModel: TopicsViewModel
 

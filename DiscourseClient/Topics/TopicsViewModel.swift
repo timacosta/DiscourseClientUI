@@ -34,10 +34,24 @@ class TopicsViewModel {
     fileprivate func fetchTopicsAndReloadUI() {
         topicsDataManager.fetchAllTopics { [weak self] (result) in
             switch result {
-            case .success(let response):
-                guard let response = response else { return }
-
-                self?.topicViewModels = response.topicList.topics.map({ TopicCellViewModel(topic: $0) })
+            case .success(let topicsResponse):
+                guard let topics = topicsResponse?.topicList.topics,
+                      let users = topicsResponse?.users else { return }
+                
+                let fetchedTopic: [TopicCellViewModel] = topics.compactMap({ topic in
+                    guard let lastPoster = users.first(where: { $0.username == topic.lastPosterUsername}) else {
+                        return nil
+                    }
+                    
+                    return TopicCellViewModel(topic: topic, lastPoster: lastPoster)
+                    
+                })
+                
+                self?.topicViewModels.append(contentsOf: fetchedTopic)
+                
+                
+                
+                //self?.topicViewModels = topics.map({ TopicCellViewModel(topic: $0, lastPoster: $0.lastPosterUsername) })
                 self?.viewDelegate?.topicsFetched()
             case .failure:
                 self?.viewDelegate?.errorFetchingTopics()
