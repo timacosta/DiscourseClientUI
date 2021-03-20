@@ -27,6 +27,7 @@ class TopicCell: UITableViewCell {
             postTitleLabel.text = viewModel.textLabelText
             postCountLabel.text = viewModel.postCount
             posterCountLabel.text = viewModel.postersCount
+            lastPostDateLabel.text = viewModel.lastPostDate
             lastPostImage.image = viewModel.lastPosterImage
             
         }
