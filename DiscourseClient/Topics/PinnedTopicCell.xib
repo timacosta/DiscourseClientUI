@@ -78,9 +78,7 @@
             <color key="backgroundColor" name="BlackKC"/>
             <connections>
                 <outlet property="bodyLabel" destination="uQK-kf-1A2" id="gui-OO-vsR"/>
-                <outlet property="containerView" destination="wa9-gT-c2O" id="vuz-Za-AS0"/>
                 <outlet property="orangeContainerView" destination="wa9-gT-c2O" id="4W7-Dx-T5Q"/>
-                <outlet property="subtitleLabel" destination="uQK-kf-1A2" id="Qza-3Q-3tB"/>
                 <outlet property="titleLabel" destination="tnT-57-XGF" id="obD-IZ-qmp"/>
             </connections>
             <point key="canvasLocation" x="185.50724637681162" y="189.50892857142856"/>

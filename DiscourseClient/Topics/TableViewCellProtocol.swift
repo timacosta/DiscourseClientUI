@@ -1,5 +1,5 @@
 //
-//  PinnedTopicCellViewModel.swift
+//  TableViewCellProtocol.swift
 //  DiscourseClient
 //
 //  Created by Tim Acosta on 21/3/21.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-class PinnedTopicCellViewModel: TableViewCellProtocol {}
+protocol TableViewCellProtocol {}

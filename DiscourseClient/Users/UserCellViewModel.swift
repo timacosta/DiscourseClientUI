@@ -31,8 +31,9 @@ class UserCellViewModel {
         imageStringURL.append(user.avatarTemplate.replacingOccurrences(of: "{size}", with: "100"))
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             if let url = URL(string: imageStringURL), let data = try? Data(contentsOf: url) {
-                self?.userImage = UIImage(data: data)
+                
                 DispatchQueue.main.async {
+                    self?.userImage = UIImage(data: data)
                     self?.viewDelegate?.userImageFetched()
                 }
             }

@@ -25,7 +25,7 @@ class TopicsViewModel {
     weak var coordinatorDelegate: TopicsCoordinatorDelegate?
     weak var viewDelegate: TopicsViewDelegate?
     let topicsDataManager: TopicsDataManager
-    var topicViewModels: [TopicCellViewModel] = []
+    var topicViewModels: [TableViewCellProtocol] = []
     var searchText: String? {
         didSet {
             if searchText != oldValue {
@@ -38,7 +38,7 @@ class TopicsViewModel {
     }
     
     //Filtered topics TODO://
-    var filteredTopics: [TopicCellViewModel] {
+    var filteredTopics: [TableViewCellProtocol] {
         guard let searchText = searchText, !searchText.isEmpty else {return topicViewModels}
         
         return topicViewModels.filter { topic in
@@ -85,11 +85,12 @@ class TopicsViewModel {
     }
     
     func refreshTopics(){
-        
+        topicViewModels = [PinnedTopicCellViewModel()]
+        fetchTopicsAndReloadUI()
     }
 
     func viewWasLoaded() {
-        fetchTopicsAndReloadUI()
+        refreshTopics()
     }
 
     func numberOfSections() -> Int {
@@ -97,17 +98,18 @@ class TopicsViewModel {
     }
 
     func numberOfRows(in section: Int) -> Int {
-        return topicViewModels.count
+        return filteredTopics.count
     }
 
     func viewModel(at indexPath: IndexPath) -> TopicCellViewModel? {
-        guard indexPath.row < topicViewModels.count else { return nil }
-        return topicViewModels[indexPath.row]
+        guard indexPath.row < filteredTopics.count else { return nil }
+        return filteredTopics[indexPath.row] as? TopicCellViewModel
     }
 
     func didSelectRow(at indexPath: IndexPath) {
-        guard indexPath.row < topicViewModels.count else { return }
-        coordinatorDelegate?.didSelect(topic: topicViewModels[indexPath.row].topic)
+        guard indexPath.row < filteredTopics.count, let topicCell = filteredTopics[indexPath.row] as? TopicCellViewModel else { return }
+        
+        coordinatorDelegate?.didSelect(topic: topicCell.topic)
     }
 
     func plusButtonTapped() {
@@ -115,10 +117,10 @@ class TopicsViewModel {
     }
     
     func newTopicWasCreated() {
-        fetchTopicsAndReloadUI()
+        refreshTopics()
     }
 
     func topicWasDeleted() {
-        fetchTopicsAndReloadUI()
+        refreshTopics()
     }
 }

@@ -11,10 +11,7 @@ import UIKit
 class PinnedTopicCell: UITableViewCell {
     
     @IBOutlet weak var orangeContainerView: UIView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
-    
     @IBOutlet weak var bodyLabel: UILabel!
     
     override func awakeFromNib() {

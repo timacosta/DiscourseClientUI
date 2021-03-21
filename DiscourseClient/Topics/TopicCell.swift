@@ -53,4 +53,8 @@ class TopicCell: UITableViewCell {
     
 }
 
+extension TopicCell: TableViewCellProtocol {
+    
+}
+
 

@@ -13,7 +13,7 @@ protocol TopicCellViewModelDelegate: class {
 }
 
 /// ViewModel que representa un topic en la lista
-class TopicCellViewModel {
+class TopicCellViewModel: TableViewCellProtocol {
     
     //MARK: - Constants
     let topic: Topic
