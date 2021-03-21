@@ -16,7 +16,11 @@ class UserCellViewModel {
     weak var viewDelegate: UserCellViewModelViewDelegate?
     let user: User
     let textLabelText: String?
-    var userImage: UIImage?
+    var userImage: UIImage? {
+        didSet {
+            viewDelegate?.userImageFetched()
+        }
+    }
     
     init(user: User) {
         self.user = user

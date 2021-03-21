@@ -86,8 +86,6 @@ class TopicsViewModel {
     
     func refreshTopics(){
         
-        //topicViewModels = [PinnedTopicCellViewModel()]
-        fetchTopicsAndReloadUI()
     }
 
     func viewWasLoaded() {
