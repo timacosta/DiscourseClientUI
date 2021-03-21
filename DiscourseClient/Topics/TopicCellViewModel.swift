@@ -46,9 +46,9 @@ class TopicCellViewModel: TableViewCellProtocol {
             self.lastPostDate = formatter.string(from: lastPostDate).capitalized
         }
         
-        let avatarURL: String = lastPoster.avatarTemplate.replacingOccurrences(of: "{size}", with: "\(self.staticImageSize)")
+        let userURL: String = lastPoster.avatarTemplate.replacingOccurrences(of: "{size}", with: "\(self.staticImageSize)")
         
-        if let imageURL = URL(string: "\(apiURL)\(avatarURL)") {
+        if let imageURL = URL(string: "\(apiURL)\(userURL)") {
             DispatchQueue.global(qos: .userInitiated).async {
                 [weak self] in
                 
