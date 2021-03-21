@@ -24,7 +24,7 @@ class PinnedTopicCell: UITableViewCell {
     
     func configureUI() {
         orangeContainerView.layer.cornerRadius = 8
-        titleLabel.font = UIFont.bigTitle
+        titleLabel.font = UIFont.mainTitle
         bodyLabel.font = UIFont.cellDetailBold
     }
     

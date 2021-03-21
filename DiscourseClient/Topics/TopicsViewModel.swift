@@ -38,7 +38,7 @@ class TopicsViewModel {
     }
     
     //Filtered topics TODO://
-    var filteredTopics: [TableViewCellProtocol] {
+    var topics: [TableViewCellProtocol] {
         guard let searchText = searchText, !searchText.isEmpty else {return topicViewModels}
         
         return topicViewModels.filter { topic in
@@ -98,16 +98,16 @@ class TopicsViewModel {
     }
 
     func numberOfRows(in section: Int) -> Int {
-        return filteredTopics.count
+        return topics.count
     }
 
     func viewModel(at indexPath: IndexPath) -> TopicCellViewModel? {
-        guard indexPath.row < filteredTopics.count else { return nil }
-        return filteredTopics[indexPath.row] as? TopicCellViewModel
+        guard indexPath.row < topics.count else { return nil }
+        return topics[indexPath.row] as? TopicCellViewModel
     }
 
     func didSelectRow(at indexPath: IndexPath) {
-        guard indexPath.row < filteredTopics.count, let topicCell = filteredTopics[indexPath.row] as? TopicCellViewModel else { return }
+        guard indexPath.row < topics.count, let topicCell = topics[indexPath.row] as? TopicCellViewModel else { return }
         
         coordinatorDelegate?.didSelect(topic: topicCell.topic)
     }

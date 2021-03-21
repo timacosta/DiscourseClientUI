@@ -37,17 +37,6 @@ class UsersViewController: UIViewController {
         return collectionView
     }()
 
-    /*lazy var tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.dataSource = self
-        table.delegate = self
-        table.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
-        table.estimatedRowHeight = 100
-        table.rowHeight = UITableView.automaticDimension
-        return table
-    }()*/
-
     init(viewModel: UsersViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -73,6 +62,13 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewWasLoaded()
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.titleView = nil
+        
     }
 
     fileprivate func showErrorFetchingUsers() {
@@ -80,25 +76,6 @@ class UsersViewController: UIViewController {
     }
 }
 
-/*extension UsersViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell,
-            let cellViewModel = viewModel.viewModel(at: indexPath) {
-            cell.viewModel = cellViewModel
-            return cell
-        }
-
-        fatalError()
-    }
-}*/
 
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -33,7 +33,7 @@ class TopicCellViewModel: TableViewCellProtocol {
         
         self.textLabelText = topic.title
         self.postCount = "\(topic.postsCount)"
-        self.postersCount = "\(topic.posters.count ?? 0)"
+        self.postersCount = "\(topic.posters.count)"
         self.lastPostDate = ""
         
         //Format date
