@@ -30,6 +30,34 @@ class TopicCell: UITableViewCell {
             lastPostDateLabel.text = viewModel.lastPostDate
             lastPostImage.image = viewModel.lastPosterImage
             
+            
+            
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configurationOfUI()
+    }
+    
+    
+    private func configurationOfUI() {
+        lastPostImage.layer.cornerRadius = lastPostImage.frame.height / 2
+        postTitleLabel.font = UIFont.title
+        
+        postCountLabel.font = UIFont.cellDetail
+        posterCountLabel.font = UIFont.cellDetail
+        lastPostDateLabel.font = UIFont.cellDetailBold
+        
+    }
+    
+}
+
+
+
+extension UIFont {
+    static let title = UIFont.systemFont(ofSize: 17, weight: .semibold)
+    static let cellDetail = UIFont.systemFont(ofSize: 14, weight: .regular)
+    static let cellDetailBold = UIFont.systemFont(ofSize: 14, weight: .bold)
+    
 }
