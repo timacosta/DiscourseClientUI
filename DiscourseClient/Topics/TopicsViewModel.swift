@@ -26,6 +26,31 @@ class TopicsViewModel {
     weak var viewDelegate: TopicsViewDelegate?
     let topicsDataManager: TopicsDataManager
     var topicViewModels: [TopicCellViewModel] = []
+    var searchText: String? {
+        didSet {
+            if searchText != oldValue {
+                viewDelegate?.topicsFetched()
+                
+            }
+            
+        }
+        
+    }
+    
+    //Filtered topics TODO://
+    var filteredTopics: [TopicCellViewModel] {
+        guard let searchText = searchText, !searchText.isEmpty else {return topicViewModels}
+        
+        return topicViewModels.filter { topic in
+            guard let topic = topic as? TopicCellViewModel else {
+                return true
+            }
+            
+            return topic.textLabelText?.contains(searchText) ?? false
+            
+        }
+        
+    }
 
     init(topicsDataManager: TopicsDataManager) {
         self.topicsDataManager = topicsDataManager
@@ -58,6 +83,12 @@ class TopicsViewModel {
             }
         }
     }
+    
+    func refreshTopics(){
+        
+        //topicViewModels = [PinnedTopicCellViewModel()]
+        fetchTopicsAndReloadUI()
+    }
 
     func viewWasLoaded() {
         fetchTopicsAndReloadUI()
@@ -84,7 +115,7 @@ class TopicsViewModel {
     func plusButtonTapped() {
         coordinatorDelegate?.topicsPlusButtonTapped()
     }
-
+    
     func newTopicWasCreated() {
         fetchTopicsAndReloadUI()
     }

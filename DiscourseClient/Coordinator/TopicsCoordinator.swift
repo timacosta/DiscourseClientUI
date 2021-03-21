@@ -41,6 +41,7 @@ class TopicsCoordinator: Coordinator {
 }
 
 extension TopicsCoordinator: TopicsCoordinatorDelegate {
+    
     func didSelect(topic: Topic) {
         let topicDetailViewModel = TopicDetailViewModel(topicID: topic.id, topicDetailDataManager: topicDetailDataManager)
         topicDetailViewModel.coordinatorDelegate = self
@@ -69,6 +70,7 @@ extension TopicsCoordinator: TopicsCoordinatorDelegate {
             self.topicsViewModel?.newTopicWasCreated()
         }
     }
+    
 }
 
 extension TopicsCoordinator: TopicDetailCoordinatorDelegate {
@@ -80,4 +82,5 @@ extension TopicsCoordinator: TopicDetailCoordinatorDelegate {
         presenter.popViewController(animated: true)
         topicsViewModel?.topicWasDeleted()
     }
+    
 }

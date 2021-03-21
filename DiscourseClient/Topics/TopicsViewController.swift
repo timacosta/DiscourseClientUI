@@ -16,9 +16,10 @@ class TopicsViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.dataSource = self
         table.delegate = self
+        table.register(UINib(nibName: "PinnedTopicCell", bundle: nil), forCellReuseIdentifier: "PinnedTopicCell")
         table.register(UINib(nibName: "TopicCell", bundle: nil), forCellReuseIdentifier: "TopicCell")
-        table.estimatedRowHeight = 100
-        table.rowHeight = UITableView.automaticDimension
+        //table.estimatedRowHeight = 100
+        //table.rowHeight = UITableView.automaticDimension
         return table
     }()
     
@@ -31,6 +32,8 @@ class TopicsViewController: UIViewController {
         return imageView
         
     }()
+    
+    lazy var searchBar = UISearchBar()
 
     let viewModel: TopicsViewModel
     private let defaultFloatingButtonBottomSpace: CGFloat = -12
@@ -75,6 +78,7 @@ class TopicsViewController: UIViewController {
         viewModel.viewWasLoaded()
         
         configureNavigationBar()
+        searchTopicConfiguration()
         
     }
 
@@ -83,7 +87,22 @@ class TopicsViewController: UIViewController {
     }
     
     @objc func searchTopicTapped() {
-        //viewModel.searchTopicTapped()
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+        searchBar.text = ""
+        navigationItem.titleView = searchBar
+        searchBar.becomeFirstResponder()
+    }
+    
+    func searchTopicConfiguration() {
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = .orangeKCPumpkin
+        
+        let textFieldInsideUISerachBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideUISerachBar?.textColor = .blackKC
+        searchBar.setImage(UIImage(), for: .search, state: .normal)
+        
     }
     
     func configureNavigationBar() {
@@ -106,8 +125,16 @@ class TopicsViewController: UIViewController {
         let alertMessage: String = NSLocalizedString("Error fetching topics\nPlease try again later", comment: "")
         showAlert(alertMessage)
     }
+    
+    func searchTopics(text: String?) {
+        viewModel.searchText = text
+    }
+    
 }
 
+
+
+//MARK: - Extension UITableViewDataSource
 extension TopicsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
@@ -122,6 +149,12 @@ extension TopicsViewController: UITableViewDataSource {
             let cellViewModel = viewModel.viewModel(at: indexPath) {
             cell.viewModel = cellViewModel
             return cell
+        }
+        
+        if let pinnedCell = tableView.dequeueReusableCell(withIdentifier: "PinnedTopicCell", for: indexPath) as? PinnedTopicCell {
+            
+            return pinnedCell
+            
         }
 
         fatalError()
@@ -145,4 +178,14 @@ extension TopicsViewController: TopicsViewDelegate {
     func errorFetchingTopics() {
         showErrorFetchingTopicsAlert()
     }
+}
+
+
+//MARK: - UISearchBarDelegate
+extension TopicsViewController: UISearchBarDelegate {
+    func cancelSearchFilter() {
+        
+    }
+    
+    
 }

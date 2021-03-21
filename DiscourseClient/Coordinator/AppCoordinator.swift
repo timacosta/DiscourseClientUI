@@ -54,11 +54,15 @@ class AppCoordinator: Coordinator {
         addChildCoordinator(usersCoordinator)
         usersCoordinator.start()
 
-        tabBarController.tabBar.tintColor = .black
-        tabBarController.viewControllers = [topicsNavigationController, categoriesNavigationController, usersNavigationController]
-        tabBarController.tabBar.items?.first?.image = UIImage(systemName: "list.dash")
-        tabBarController.tabBar.items?[1].image = UIImage(systemName: "tag")
-        tabBarController.tabBar.items?[2].image = UIImage(systemName: "person.3")
+        tabBarController.tabBar.tintColor = .orangeKCTangerine
+        tabBarController.tabBar.unselectedItemTintColor = .blackKC
+        tabBarController.tabBar.backgroundColor = .whiteKCTabBar
+        tabBarController.tabBar.alpha = 0.9
+        
+        tabBarController.viewControllers = [topicsNavigationController, usersNavigationController, categoriesNavigationController, ]
+        tabBarController.tabBar.items?.first?.image = UIImage(named: "inicio")
+        tabBarController.tabBar.items?[1].image = UIImage(named: "usuarios")
+        tabBarController.tabBar.items?[2].image = UIImage(systemName: "paperplane.fill")
 
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
