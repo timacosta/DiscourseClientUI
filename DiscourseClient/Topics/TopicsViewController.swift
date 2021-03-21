@@ -82,6 +82,10 @@ class TopicsViewController: UIViewController {
         viewModel.plusButtonTapped()
     }
     
+    @objc func searchTopicTapped() {
+        //viewModel.searchTopicTapped()
+    }
+    
     func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.titleView = nil
@@ -90,6 +94,12 @@ class TopicsViewController: UIViewController {
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: addTopicIcon, style: .plain, target: self, action: #selector(plusButtonTapped))
         leftBarButtonItem.tintColor = .orangeKCPumpkin
         navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+        let searchTopicButton = UIImage(named: "icoSearch")?.withRenderingMode(.alwaysTemplate)
+        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: searchTopicButton, style: .plain, target: self, action: #selector(searchTopicTapped))
+        rightBarButtonItem.tintColor = .orangeKCPumpkin
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        
     }
 
     fileprivate func showErrorFetchingTopicsAlert() {
