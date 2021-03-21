@@ -22,12 +22,20 @@ class TopicsViewController: UIViewController {
         return table
     }()
     
-    /*lazy var flotingActionButton: UIImageView = {
+    lazy var floatingActionButton: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "icoNew")?.withRenderingMode(.alwaysOriginal))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(plusButtonTapped)))
         
-    }()*/
+        return imageView
+        
+    }()
 
     let viewModel: TopicsViewModel
+    private let defaultFloatingButtonBottomSpace: CGFloat = -12
+    private var floatingButtonBottomConstraint: NSLayoutConstraint?
+    
 
     init(viewModel: TopicsViewModel) {
         self.viewModel = viewModel
@@ -47,6 +55,17 @@ class TopicsViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        view.addSubview(floatingActionButton)
+        let bottomConstraint = floatingActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: defaultFloatingButtonBottomSpace)
+        floatingButtonBottomConstraint = bottomConstraint
+        NSLayoutConstraint.activate([
+            floatingActionButton.widthAnchor.constraint(equalToConstant: floatingActionButton.bounds.height),
+            floatingActionButton.heightAnchor.constraint(equalToConstant: floatingActionButton.bounds.width),
+            floatingActionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
+            bottomConstraint
+            
         ])
 
 
