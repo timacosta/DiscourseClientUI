@@ -68,19 +68,28 @@ class TopicsViewController: UIViewController {
             
         ])
 
-
-        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
-        rightBarButtonItem.tintColor = .black
-        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewWasLoaded()
+        
+        configureNavigationBar()
+        
     }
 
     @objc func plusButtonTapped() {
         viewModel.plusButtonTapped()
+    }
+    
+    func configureNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.titleView = nil
+        
+        let addTopicIcon = UIImage(named: "icoAdd")?.withRenderingMode(.alwaysTemplate)
+        let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: addTopicIcon, style: .plain, target: self, action: #selector(plusButtonTapped))
+        leftBarButtonItem.tintColor = .orangeKCPumpkin
+        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 
     fileprivate func showErrorFetchingTopicsAlert() {
@@ -108,6 +117,8 @@ extension TopicsViewController: UITableViewDataSource {
         fatalError()
     }
 }
+
+
 
 extension TopicsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
