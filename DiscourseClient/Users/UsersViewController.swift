@@ -65,9 +65,27 @@ class UsersViewController: UIViewController {
         configureNavigationBar()
     }
     
+    @objc func plusButtonTapped() {
+        //TODO
+    }
+    
+    @objc func searchTopicTapped() {
+        
+    }
+    
     func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.titleView = nil
+        
+        let addUserIcon = UIImage(named: "icoAdd")?.withRenderingMode(.alwaysTemplate)
+        let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: addUserIcon, style: .plain, target: self, action: #selector(plusButtonTapped))
+        leftBarButtonItem.tintColor = .orangeKCPumpkin
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+        let searchTopicButton = UIImage(named: "icoSearch")?.withRenderingMode(.alwaysTemplate)
+        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: searchTopicButton, style: .plain, target: self, action: #selector(searchTopicTapped))
+        rightBarButtonItem.tintColor = .orangeKCPumpkin
+        navigationItem.rightBarButtonItem = rightBarButtonItem
         
     }
 
