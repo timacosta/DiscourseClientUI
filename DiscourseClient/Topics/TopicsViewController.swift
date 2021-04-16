@@ -183,9 +183,6 @@ extension TopicsViewController: TopicsViewDelegate {
 
 //MARK: - UISearchBarDelegate
 extension TopicsViewController: UISearchBarDelegate {
-    func cancelSearchFilter() {
-        
-    }
-    
-    
+    //TODO
+
 }

@@ -8,4 +8,5 @@
 
 import Foundation
 
+//Protocol to be implemented, so that both, pinnedCell and TopicCell can be used in TopicViewController
 protocol TableViewCellProtocol {}
